@@ -3,7 +3,7 @@ import { Home, MessageSquare, FileText, BookOpen, TrendingUp } from 'lucide-reac
 import { cn } from '@/lib/utils'
 
 const navigation = [
-  { name: '대시보드', href: '/', icon: Home },
+  { name: '최신 경제 대시보드', href: '/', icon: Home },
   { name: '요약/Q&A', href: '/qa', icon: MessageSquare },
   { name: '문제 생성', href: '/problems', icon: FileText },
   { name: '자료 추천', href: '/recommend', icon: BookOpen },

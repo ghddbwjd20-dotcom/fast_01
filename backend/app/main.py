@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.db.mongo import connect_to_mongo, close_mongo_connection
-from app.routers import health, qa, problems, recommend, market
+from app.routers import health, qa, problems, recommend, market, advanced, chat
 
 
 @asynccontextmanager
@@ -37,10 +37,12 @@ app.add_middleware(
 
 # 라우터 등록
 app.include_router(health.router, prefix=settings.API_PREFIX)
+app.include_router(chat.router, prefix=settings.API_PREFIX)  # 챗봇 (최우선)
 app.include_router(qa.router, prefix=settings.API_PREFIX)
 app.include_router(problems.router, prefix=settings.API_PREFIX)
 app.include_router(recommend.router, prefix=settings.API_PREFIX)
 app.include_router(market.router, prefix=settings.API_PREFIX)
+app.include_router(advanced.router, prefix=settings.API_PREFIX)
 
 
 @app.get("/")
