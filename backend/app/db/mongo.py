@@ -12,16 +12,22 @@ mongo = MongoDB()
 
 async def connect_to_mongo():
     """MongoDB 연결 초기화"""
-    mongo.client = AsyncIOMotorClient(settings.MONGO_URI)
-    mongo.db = mongo.client[settings.MONGO_DB]
-    print(f"✅ MongoDB 연결 성공: {settings.MONGO_DB}")
+    try:
+        mongo.client = AsyncIOMotorClient(settings.MONGO_URI)
+        mongo.db = mongo.client[settings.MONGO_DB]
+        # 연결 테스트
+        await mongo.client.admin.command('ping')
+        print(f"[OK] MongoDB Connected: {settings.MONGO_DB}")
+    except Exception as e:
+        print(f"[WARNING] MongoDB Connection Failed: {e}")
+        print("[INFO] Application will run without MongoDB (bookmarks disabled)")
 
 
 async def close_mongo_connection():
     """MongoDB 연결 종료"""
     if mongo.client:
         mongo.client.close()
-        print("✅ MongoDB 연결 종료")
+        print("[OK] MongoDB Connection Closed")
 
 
 def get_database() -> AsyncIOMotorDatabase:

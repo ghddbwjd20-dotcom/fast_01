@@ -17,7 +17,6 @@ import { getKPIs, getTrends, getNews } from '@/lib/api'
 import KpiCard from '@/components/KpiCard'
 import ChartCard from '@/components/ChartCard'
 import NewsCard from '@/components/NewsCard'
-import LoadingSpinner from '@/components/LoadingSpinner'
 import ErrorDisplay from '@/components/ErrorDisplay'
 import Skeleton from '@/components/ui/Skeleton'
 

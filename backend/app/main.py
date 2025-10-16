@@ -11,11 +11,11 @@ from app.routers import health, qa, problems, recommend, market
 async def lifespan(app: FastAPI):
     """애플리케이션 생명주기 관리"""
     # Startup
-    print("🚀 애플리케이션 시작")
+    print("==> Application Starting...")
     await connect_to_mongo()
     yield
     # Shutdown
-    print("👋 애플리케이션 종료")
+    print("==> Application Shutting Down...")
     await close_mongo_connection()
 
 

@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"  # BOM 및 추가 필드 무시
     
     @property
     def cors_origins_list(self) -> List[str]:
